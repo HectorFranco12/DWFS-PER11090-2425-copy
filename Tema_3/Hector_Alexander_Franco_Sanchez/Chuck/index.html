@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" onclick="getChuckJoke()">Dame un chiste Chuck</button>
+    <p id="saying-joke"> ¡Aquí va el chiste! </p>
+    <script>
+        let chuckJoke = '';
+
+        // Esta función consulta a la API los chistes de Chuck y los muestra en el parrafo 'p'. 
+        function getChuckJoke() {
+            const paragraph = document.getElementById('saying-joke');
+            const jokeUrl = 'https://api.chucknorris.io/jokes/random';
+
+            fetch(jokeUrl)
+            .then((response) => response.json())
+            .then((joke) => {
+                chuckJoke = joke.value;
+
+                paragraph.innerHTML = String(chuckJoke);
+                
+            });
+        }
+    </script>
+</body>
+</html>
